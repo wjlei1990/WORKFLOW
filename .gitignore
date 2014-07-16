@@ -1,0 +1,11 @@
+OUTPUT/*
+obj/*
+*.o
+*.mod
+*.bp
+WINDOW/*
+WORKFLOW
+*.sac
+*.bp
+log*
+*.sem

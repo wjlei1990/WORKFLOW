@@ -1,0 +1,27 @@
+#===========================
+#PAR_FILE for main program
+#===========================
+
+OBSD_FILE                   = DATA/201001122153A_obs.bp
+SYNT_FILE                   = DATA/201001122153A_sem.bp
+SYNT_PHYDISP_FILE           = .
+
+#period band for filter
+PERIOD_BEGIN                = 27.0
+PERIOD_END                  = 60.0
+
+#FLEXWIN output dir
+FELXWIN_OUTDIR              = WINDOW
+WRITE_SINGLE_WIN_FILE       = .true.
+REMOVE_SURFACE_WAVE         = .false
+
+#MEASURE_ADJ
+MEASURE_ADJ_OUTDIR          = OUTPUT
+WEIGHTING_OPTION            = 1
+USE_PHYDISP                 = .false.
+WRITE_ADJ_ASDF              = .true.
+ROTATE_COMP                 = .true.
+WRITE_ADJ_ASCII             = .true.
+
+
+

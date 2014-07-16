@@ -1,0 +1,291 @@
+./remodl
+ DEBUG - calling rough
+ DEBUG          11   1217.100       3482.000       3631.000       5611.000    
+   5711.000       5961.000       6161.000       6251.000       6336.000    
+   6351.000       6371.000      0.0000000E+00  0.0000000E+00  0.0000000E+00
+  0.0000000E+00  0.0000000E+00  0.0000000E+00  0.0000000E+00  0.0000000E+00
+  0.0000000E+00  0.0000000E+00  0.0000000E+00  0.0000000E+00  0.0000000E+00
+  0.0000000E+00  0.0000000E+00  0.0000000E+00  0.0000000E+00  0.0000000E+00
+  0.0000000E+00 iasp91              
+ DEBUG - calling findcp
+ DEBUG Calling pgrid with           1           0  1.5696124E-04
+ DEBUG Calling pgrid with           2           0  1.5696124E-04
+ DEBUG Done calling pgrid with           2         270  1.5696124E-04
+./setbrn
+ ndasr =        5164   modnam = iasp91              
+ Layout:  do Pup
+ Mkubr:  l1 isgn =          42           1
+ Mkubr:  nseg kndx indx =           1           1         244           1
+ Layout:  do P and PKP
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1          12          -1
+           3           1           1
+ Mkdbr:  nseg kndx indx =           2           1         244          43
+ Layout:  do PKiKP
+ Mkrbr:  l1 isgn lyr nph kph =           2          -1           2           1
+           1
+ Mkrbr:  nseg kndx indx =           3           1          64         195
+ Layout:  do pP
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1          12           1
+           3           1           1
+ Mkdbr:  nseg kndx indx =           4           1         244         237
+ Layout:  do sP
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1          12           2
+           3           1           1
+ Mkdbr:  nseg kndx indx =           5           1         244         389
+ Layout:  do pPKiKP
+ Mkrbr:  l1 isgn lyr nph kph =           2           1           2           1
+           1
+ Mkrbr:  nseg kndx indx =           6           1          64         541
+ Layout:  do sPKiKP
+ Mkrbr:  l1 isgn lyr nph kph =           2           2           2           1
+           1
+ Mkrbr:  nseg kndx indx =           7           1          64         583
+ Layout:  do PcP
+ Mkrbr:  l1 isgn lyr nph kph =           3          -1           1           1
+           1
+ Mkrbr:  nseg kndx indx =           8           1          95         625
+ Layout:  do ScP
+ Mkrbr:  l1 isgn lyr nph kph =           3          -2           1           2
+           1
+ Mkrbr:  nseg kndx indx =           9           1          95         670
+ Layout:  do SKP
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1           3          -2
+           3           2           1
+ Mkdbr:  nseg kndx indx =          10           1          95         704
+ Layout:  do SKiKP
+ Mkrbr:  l1 isgn lyr nph kph =           2          -2           2           2
+           1
+ Mkrbr:  nseg kndx indx =          11           1          64         769
+ Layout:  do PKKP
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1           3          -1
+           3           1           1
+ Mkdbr:  nseg kndx indx =          12           1          95         811
+ Layout:  do SKKP
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1           3          -2
+           3           2           1
+ Mkdbr:  nseg kndx indx =          13           1          95         876
+ Layout:  do PP, P'P'
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1          12          -1
+           3           1           1
+ Mkdbr:  nseg kndx indx =          14           1         244         941
+ Layout:  do Sup
+ Mkubr:  l1 isgn =          44           2
+ Mkubr:  nseg kndx indx =          15           1         322        1093
+ Layout:  do S and SKS
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1          15          -2
+           3           2           2
+ Mkdbr:  nseg kndx indx =          16           1         322        1137
+ Layout:  do pS
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1          12           1
+           3           2           2
+ Mkdbr:  nseg kndx indx =          17           1         244        1312
+ Layout:  do sS
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1          15           2
+           3           2           2
+ Mkdbr:  nseg kndx indx =          18           1         322        1447
+ Layout:  do ScS
+ Mkrbr:  l1 isgn lyr nph kph =           4          -2           1           2
+           2
+ Mkrbr:  nseg kndx indx =          19           1         143        1622
+ Layout:  do PcS
+ Mkrbr:  l1 isgn lyr nph kph =           3          -1           1           1
+           2
+ Mkrbr:  nseg kndx indx =          20           1          95        1677
+ Layout:  do PKS
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1           3          -1
+           3           1           2
+ Mkdbr:  nseg kndx indx =          21           1          95        1711
+ Layout:  do PKKS
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1           3          -1
+           3           1           2
+ Mkdbr:  nseg kndx indx =          22           1          95        1776
+ Layout:  do SKKS
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1           3          -2
+           3           2           2
+ Mkdbr:  nseg kndx indx =          23           1         123        1841
+ Layout:  do SS and S'S'
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1          15          -2
+           3           2           2
+ Mkdbr:  nseg kndx indx =          24           1         322        1928
+ Layout:  do SP
+ Mkcbr:  l1 l2 isgn lyr nph kph =           4          12          -2
+           1           2           1
+ Mkcbr:  nseg kndx indx =          25         143         244        2103
+ Mkcbr:  start loop
+ kph:  kph ik j l code =           1           4         143         156  
+ tP      
+ phcd:  in ik phcd =           5           4  SP      
+ kph:  kph ik j l code =           1           6         162         170  
+ tP      
+ phcd:  in ik phcd =           5           6  SP      
+ kph:  kph ik j l code =           1           8         174         196  
+ tPn     
+ phcd:  in ik phcd =           5           8  SPn     
+ kph:  kph ik j l code =           1          12         239         244  
+ tPg     
+ phcd:  in ik phcd =           7          12  SPg     
+ Layout:  do PS
+ Mkcbr:  l1 l2 isgn lyr nph kph =           4          12          -1
+           1           1           2
+ Mkcbr:  nseg kndx indx =          26         143         244        2141
+ Mkcbr:  start loop
+ nph:  nph in j l code =           1           4         143         156  
+ tP      
+ phcd:  in ik phcd =           4           5  PS      
+ nph:  nph in j l code =           1           6         162         170  
+ tP      
+ phcd:  in ik phcd =           6           5  PS      
+ nph:  nph in j l code =           1           8         174         196  
+ tPn     
+ phcd:  in ik phcd =           8           5  PnS     
+ nph:  nph in j l code =           1          12         239         244  
+ tPg     
+ phcd:  in ik phcd =          12           7  PgS     
+ reclength for direct access        2400
+ header file  :iasp91.hed
+ table file   :iasp91.tbl
+./remodl_socal
+ DEBUG - calling rough
+ DEBUG          12   1217.100       3482.000       3631.000       5611.000    
+   5711.000       5961.000       6161.000       6251.000       6336.000    
+   6355.000       6365.500       6371.000      0.0000000E+00  0.0000000E+00
+  0.0000000E+00  0.0000000E+00  0.0000000E+00  0.0000000E+00  0.0000000E+00
+  0.0000000E+00  0.0000000E+00  0.0000000E+00  0.0000000E+00  0.0000000E+00
+  0.0000000E+00  0.0000000E+00  0.0000000E+00  0.0000000E+00  0.0000000E+00
+  0.0000000E+00 socal               
+ DEBUG - calling findcp
+ DEBUG Calling pgrid with           1           0  1.5696124E-04
+ DEBUG Calling pgrid with           2           0  1.5696124E-04
+./setbrn_socal
+ ndasr =        5164   modnam = iasp91              
+ Layout:  do Pup
+ Mkubr:  l1 isgn =          42           1
+ Mkubr:  nseg kndx indx =           1           1         244           1
+ Layout:  do P and PKP
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1          12          -1
+           3           1           1
+ Mkdbr:  nseg kndx indx =           2           1         244          43
+ Layout:  do PKiKP
+ Mkrbr:  l1 isgn lyr nph kph =           2          -1           2           1
+           1
+ Mkrbr:  nseg kndx indx =           3           1          64         195
+ Layout:  do pP
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1          12           1
+           3           1           1
+ Mkdbr:  nseg kndx indx =           4           1         244         237
+ Layout:  do sP
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1          12           2
+           3           1           1
+ Mkdbr:  nseg kndx indx =           5           1         244         389
+ Layout:  do pPKiKP
+ Mkrbr:  l1 isgn lyr nph kph =           2           1           2           1
+           1
+ Mkrbr:  nseg kndx indx =           6           1          64         541
+ Layout:  do sPKiKP
+ Mkrbr:  l1 isgn lyr nph kph =           2           2           2           1
+           1
+ Mkrbr:  nseg kndx indx =           7           1          64         583
+ Layout:  do PcP
+ Mkrbr:  l1 isgn lyr nph kph =           3          -1           1           1
+           1
+ Mkrbr:  nseg kndx indx =           8           1          95         625
+ Layout:  do ScP
+ Mkrbr:  l1 isgn lyr nph kph =           3          -2           1           2
+           1
+ Mkrbr:  nseg kndx indx =           9           1          95         670
+ Layout:  do SKP
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1           3          -2
+           3           2           1
+ Mkdbr:  nseg kndx indx =          10           1          95         704
+ Layout:  do SKiKP
+ Mkrbr:  l1 isgn lyr nph kph =           2          -2           2           2
+           1
+ Mkrbr:  nseg kndx indx =          11           1          64         769
+ Layout:  do PKKP
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1           3          -1
+           3           1           1
+ Mkdbr:  nseg kndx indx =          12           1          95         811
+ Layout:  do SKKP
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1           3          -2
+           3           2           1
+ Mkdbr:  nseg kndx indx =          13           1          95         876
+ Layout:  do PP, P'P'
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1          12          -1
+           3           1           1
+ Mkdbr:  nseg kndx indx =          14           1         244         941
+ Layout:  do Sup
+ Mkubr:  l1 isgn =          44           2
+ Mkubr:  nseg kndx indx =          15           1         322        1093
+ Layout:  do S and SKS
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1          15          -2
+           3           2           2
+ Mkdbr:  nseg kndx indx =          16           1         322        1137
+ Layout:  do pS
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1          12           1
+           3           2           2
+ Mkdbr:  nseg kndx indx =          17           1         244        1312
+ Layout:  do sS
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1          15           2
+           3           2           2
+ Mkdbr:  nseg kndx indx =          18           1         322        1447
+ Layout:  do ScS
+ Mkrbr:  l1 isgn lyr nph kph =           4          -2           1           2
+           2
+ Mkrbr:  nseg kndx indx =          19           1         143        1622
+ Layout:  do PcS
+ Mkrbr:  l1 isgn lyr nph kph =           3          -1           1           1
+           2
+ Mkrbr:  nseg kndx indx =          20           1          95        1677
+ Layout:  do PKS
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1           3          -1
+           3           1           2
+ Mkdbr:  nseg kndx indx =          21           1          95        1711
+ Layout:  do PKKS
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1           3          -1
+           3           1           2
+ Mkdbr:  nseg kndx indx =          22           1          95        1776
+ Layout:  do SKKS
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1           3          -2
+           3           2           2
+ Mkdbr:  nseg kndx indx =          23           1         123        1841
+ Layout:  do SS and S'S'
+ Mkdbr:  l1 l2 isgn lyr nph kph =           1          15          -2
+           3           2           2
+ Mkdbr:  nseg kndx indx =          24           1         322        1928
+ Layout:  do SP
+ Mkcbr:  l1 l2 isgn lyr nph kph =           4          12          -2
+           1           2           1
+ Mkcbr:  nseg kndx indx =          25         143         244        2103
+ Mkcbr:  start loop
+ kph:  kph ik j l code =           1           4         143         156  
+ tP      
+ phcd:  in ik phcd =           5           4  SP      
+ kph:  kph ik j l code =           1           6         162         170  
+ tP      
+ phcd:  in ik phcd =           5           6  SP      
+ kph:  kph ik j l code =           1           8         174         196  
+ tPn     
+ phcd:  in ik phcd =           5           8  SPn     
+ kph:  kph ik j l code =           1          12         239         244  
+ tPg     
+ phcd:  in ik phcd =           7          12  SPg     
+ Layout:  do PS
+ Mkcbr:  l1 l2 isgn lyr nph kph =           4          12          -1
+           1           1           2
+ Mkcbr:  nseg kndx indx =          26         143         244        2141
+ Mkcbr:  start loop
+ nph:  nph in j l code =           1           4         143         156  
+ tP      
+ phcd:  in ik phcd =           4           5  PS      
+ nph:  nph in j l code =           1           6         162         170  
+ tP      
+ phcd:  in ik phcd =           6           5  PS      
+ nph:  nph in j l code =           1           8         174         196  
+ tPn     
+ phcd:  in ik phcd =           8           5  PnS     
+ nph:  nph in j l code =           1          12         239         244  
+ tPg     
+ phcd:  in ik phcd =          12           7  PgS     
+ reclength for direct access        2400
+ header file  :iasp91.hed
+ table file   :iasp91.tbl

@@ -1,0 +1,148 @@
+module process_asdf_mod
+
+contains
+!> \Time-series Analysis for global adjoint tomography
+!! Developer: Princeton Global Tomography Group(PGTG)
+!! Group Member: James Smith jas11(@princeton.edu), Ebru Bozdag(bozdag@princeton.edu),
+!! Wenjie Lei (lei@princeton.edu)
+!! Bug Report: jas11@princeton.edu
+
+subroutine process_asdf(observed_raw, synthetic_raw, observedd_rotate, synthetic_rotate, rank, comm)
+
+  use mpi
+  use asdf_data
+  use asdf_read_subs
+  use process_var
+  use process_subs
+  use rotate_subs
+  use var_main
+
+  integer                   :: comm, rank, ierr, nproc, adios_err
+  integer(kind=8)           :: adios_handle, adios_group
+  integer(kind=8)           :: adios_groupsize, adios_totalsize
+
+  type (asdf_event),intent(inout) :: observed_raw, synthetic_raw
+  type (asdf_event) :: observed_proc, synthetic_proc
+  type (asdf_event),intent(inout) :: obsserved_rotate, synthetic_rotate
+
+!-----------------------------------------------------------------------------------
+! READ CMT FILE AND COMPUTE JULIAN DAY AND ORIGIN OF EVENT
+!-----------------------------------------------------------------------------------
+
+  call read_CMT(observed_raw%event, rank, comm, ierr)
+  call event_origin(rank, comm, ierr)
+
+!-----------------------------------------------------------------------------------
+! ADJUST TIME OF OBSERVED DATA BASED ON CMT EVENT ORIGIN
+!-----------------------------------------------------------------------------------
+  call adjust_event_time(obsd_raw)
+  print *, "observed origin time adjusted based on cmt event"
+!-----------------------------------------------------------------------------------
+! LOOOP THROUGH PAIRS of OBSERVED AND SYNTHETIC TRACES
+!-----------------------------------------------------------------------------------
+
+  do irecord = 1, obsd_raw%nrecords
+    print *, "Processing record ", irecord, " of ", obsd_raw%nrecords, " on processor " , rank, "."
+    print *, "Station name: ", obsd_raw%receiver_name_array(irecord)
+    print *, "Component name: ", obsd_raw%component_array(irecord)
+
+    if (synt_raw%npoints(irecord) .gt. 1) then
+
+!-----------------------------------------------------------------------------------
+! CUT OBSERVED AND SYNTHETIC SEISMOGRAM
+!-----------------------------------------------------------------------------------
+
+    call cut_seis(obsd_raw%records(irecord)%record, obsd_raw%npoints(irecord),obsd_raw%sample_rate(irecord), obsd_raw%begin_value(irecord), &
+    synt_raw%records(irecord)%record, synt_raw%npoints(irecord), synt_raw%sample_rate(irecord), synt_raw%begin_value(irecord), &
+    observed_cut, npoints_observed, dt1, b1_cut,&
+    synthetic_cut, npoints_synthetic, dt2, b2_cut)
+    print *, "first cut done"
+
+!-----------------------------------------------------------------------------------
+! PREPARE FOR DECONVOLUTION: rmean/rtrend/taper
+!-----------------------------------------------------------------------------------
+
+    call rmean(observed_cut, npoints_observed, mean)
+    call rtrend(observed_cut, npoints_observed, yint, slope, &
+                beg_max, sngl(observed_raw%sample_rate(irecord    call taper_width_to_points(.05, npoints_synthetic, ipts)
+    call taper(observed_cut, npoints_observed, 2, ipts)
+
+    call rmean(cut_synthetic, npoints_synthetic, mean)
+    call rtrend(cut_synthetic, npoints_synthetic, yint, slope, &
+                beg_max, sngl(synthetic_raw%sample_rate(irecord)))
+    call taper_width_to_points(.05, npoints_synthetic, ipts)
+    call taper(cut_synthetic, npoints_synthetic, 2, ipts)
+    print *, "prepared for deconvolution"
+
+!-----------------------------------------------------------------------------------
+! REMOVE INSTRUMENT RESPONSE
+!-----------------------------------------------------------------------------------
+
+    call remove_response(observed_cut, synthetic_cut, npoints_observed, npoints_synthetic,&
+           synthetic_raw%sample_rate(irecord), observed_raw, irecord)
+    print *, "removed response"
+
+!-----------------------------------------------------------------------------------
+! rmean/rtrend/taper again in case instrument response introduces artifacts
+!-----------------------------------------------------------------------------------
+
+!    call rmean(cut_observed, npoints_observed, mean)
+!    call rtrend(cut_observed, npoints_observed, yint, slope, &
+!                beg_max, sngl(observed_raw%sample_rate(irecord)))
+!    call taper_width_to_points(.05, npoints_synthetic, ipts)
+!    call taper(cut_observed, npoints_observed, 2, ipts)
+!
+!    call rmean(cut_synthetic, npoints_synthetic, mean)
+!    call rtrend(cut_synthetic, npoints_synthetic, yint, slope, &
+!                beg_max, sngl(synthetic_raw%sample_rate(irecord)))
+!    call taper_width_to_points(.05, npoints_synthetic, ipts)
+!    call taper(cut_synthetic, npoints_synthetic, 2, ipts)
+!    print *, "prepared for deconvolution"
+
+!-----------------------------------------------------------------------------------
+! RESAMPLE OBSERVED AND SYNTHETIC SEISMOGRAMS TO SAME SAMPLE RATE
+!-----------------------------------------------------------------------------------
+
+    call interp(synt_cut, npts_synt, synt_interp, npts_synt_interp,&
+                beg_max, end_min, dt_synt_cut, &
+                b_synt_interp, dt_syn_interp, error)
+    call interp(obsd_cut, npts_obsd, obsd_interp, npts_obsd_interp,&
+                beg_max, end_min, dt_obsd_cut, &
+                b_obsd_interp, dt_obsd_interp, error)
+    print *, "resample complete"
+    !call wsac1("cut.obs", cut_observed, npoints_synthetic,&
+    !      beg_max, sngl(synthetic_raw%sample_rate(irecord)), nerr)
+    !call wsac1("cut.syn", cut_synthetic, npoints_synthetic,&
+    !         beg, sngl(synthetic_raw%sample_rate(irecord)), nerr)
+
+!-----------------------------------------------------------------------------------
+! FINAL CUT OF OBSERVED AND SYNTHETIC SEISMOGRAMS
+!-----------------------------------------------------------------------------------
+
+    call cut_seis(obsd_interp, npts_obsd_interp, dt_obsd_interp, b_obsd_interp, &
+      synt_cut, npts_synt_interp, dt_synt_interp, b_synt_interp, &
+      obsd_final, npts_obsd_final, dt_obsd_final, b_obsd_final, &
+      synt_final, npts_synt_final, dt_synt_final, b_synt_final)
+    print *, "final cut finished"
+
+    endif
+
+!-----------------------------------------------------------------------------------
+! COPY PROCESSED DATA TO ASDF CONTAINER
+!-----------------------------------------------------------------------------------
+    obsd
+    call store_asdf_data(observed_raw, observed_proc, synthetic_raw, synthetic_proc, dble(beg_max), irecord)
+  enddo
+
+!-----------------------------------------------------------------------------------
+! ROTATE
+!-----------------------------------------------------------------------------------
+  call rotate_traces(observed_proc, observed_rotate)
+  call rotate_traces(synthetic_proc, synthetic_rotate)
+  print *, "rotation finished"
+
+  call deallocate_all(observed_raw, synthetic_raw)
+
+end subroutine process_asdf
+
+end module

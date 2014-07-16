@@ -1,0 +1,32 @@
+# -------------------------------------------------------------
+#
+# This is the parameter file for the PROCESS_ASDF package which   
+# is a file format desigend for massive data sets on HPC systems.
+#
+# -------------------------------------------------------------
+
+#DEBUG mode
+DEBUG                     = .FALSE.
+
+#event name
+EVENT                     = 201011100405A
+
+#input files 
+DATADIR                   = /home/jas11/git/seismo-PROCESS_ASDF/DATA
+OBSD_FILE                 = /home/jas11/git/seismo-PROCESS_ASDF/DATA/OBSD_raw/201011100405A_asdf.bp
+SYNT_FILE                 = /home/jas11/git/seismo-PROCESS_ASDF/DATA/SYNT_raw/201011100405A_asdf.bp
+
+#output files
+OUTDIR                    = /home/jas11/git/seismo-PROCESS_ASDF/OUTPUT_FILES
+
+# bandpass filter parameters
+MIN_PERIOD                = 27.0
+MAX_PERIOD                = 60.0
+
+# type of instrument response
+RESP_FLAG                 = .TRUE.
+PZs_FLAG                  = .FALSE.
+
+# type of output seismograms after deconvolution
+DISP                      = .TRUE.
+VEL                       = .FALSE.
