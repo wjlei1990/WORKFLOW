@@ -1,0 +1,30 @@
+cut off
+fg impulse
+ch t1 56
+write test.impulse
+
+cut 20 80
+read test.impulse
+lh b e
+
+cut off
+read test.impulse
+lh b e
+
+cut -10 80
+read test.impulse
+lh b e
+
+cut 10 180
+read test.impulse
+lh b e
+
+cut t1 80
+read test.impulse
+lh b e
+
+cut t1 e
+read test.impulse
+lh b e
+
+
